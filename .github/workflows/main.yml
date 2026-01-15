@@ -1,0 +1,27 @@
+name: Streamlit Docker CI
+
+on:
+  push:
+    branches: [ "main" ] # ඔයාගේ branch එකේ නම master නම් මෙතන master කියලා දාන්න
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install streamlit pandas
+
+      - name: Build Docker Image
+        run: |
+          docker build -t bmi-app .
+          echo "Docker Build eka elatama wada mchan! ✅"
