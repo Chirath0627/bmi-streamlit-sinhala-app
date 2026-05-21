@@ -2,7 +2,7 @@ name: Streamlit Docker CI
 
 on:
   push:
-    branches: [ "main" ] # ඔයාගේ branch එකේ නම master නම් මෙතන master කියලා දාන්න
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -24,4 +24,4 @@ jobs:
       - name: Build Docker Image
         run: |
           docker build -t bmi-app .
-          echo "Docker Build eka elatama wada mchan! ✅"
+          echo "Docker Build Work Properly! ✅"
