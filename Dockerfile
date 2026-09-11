@@ -1,5 +1,6 @@
 # 1. Select Base Image
 FROM python:3.9-slim
+ENV PIP_ROOT_USER_ACTION=ignore
 
 # 2. Create Folders Inside Containers
 WORKDIR /app
