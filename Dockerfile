@@ -1,18 +1,21 @@
 # 1. Select Base Image
 FROM python:3.9-slim
-ENV PIP_ROOT_USER_ACTION=ignore
 
-# 2. Create Folders Inside Containers
+# 2. Reject Pip root warning and version check warnings
+ENV PIP_ROOT_USER_ACTION=ignore
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# 3. Create Folders Inside Containers
 WORKDIR /app
 
-# 3. Copy Requirements file to Container
+# 4. Copy Requirements file to Container
 COPY requirements.txt .
 
-# 4. Libraries install
+# 5. Libraries install
 RUN pip install -r requirements.txt
 
-# 5. Copy All Files
+# 6. Copy All Files
 COPY . .
 
-# 6. Run Streamlit  
+# 7. Run Streamlit  
 CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
