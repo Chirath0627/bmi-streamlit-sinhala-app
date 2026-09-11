@@ -25,4 +25,4 @@ if st.button("Calculate BMI"):
         else:
             st.error("Bara wadi (Overweight)")
     else:
-        st.error("Usa 0 wenna ba mchan!")
+        st.error("Usa 0 wenna ba mchan!!!")
