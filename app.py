@@ -5,10 +5,10 @@ st.set_page_config(page_title="BMI Calculator", page_icon="⚖️")
 st.title("⚖️ Health Metrics: BMI Calculator")
 
 # Input fields
-weight = st.number_input("Oyaage bara danna (kg):", min_value=1.0, step=0.1)
+weight = st.number_input("Oyage bara danna (kg):", min_value=1.0, step=0.1)
 
 
-height_cm = st.number_input("Oyaage usa danna (cm):", min_value=1.0, step=1.0)
+height_cm = st.number_input("Oyage usa danna (cm):", min_value=1.0, step=1.0)
 
 if st.button("Calculate BMI"):
     if height_cm > 0:
