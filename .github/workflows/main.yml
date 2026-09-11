@@ -21,7 +21,7 @@ jobs:
           script: |
             # 1. Clone repo if missing, otherwise hard reset to latest origin/main
             if [ ! -d "bmi-calculator" ]; then
-              git clone https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPO-NAME.git bmi-calculator
+              git clone https://github.com/Chirath0627/bmi-streamlit-sinhala-app.git bmi-calculator
               cd bmi-calculator
             else
               cd bmi-calculator
