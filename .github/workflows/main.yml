@@ -19,9 +19,9 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # 1. Clone repo if it doesn't exist, otherwise hard reset and pull latest changes
+            # 1. Clone repo if missing, otherwise hard reset to latest origin/main
             if [ ! -d "bmi-calculator" ]; then
-              git clone https://github.com/Chirath0627/bmi-streamlit-sinhala-app.git bmi-calculator
+              git clone https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPO-NAME.git bmi-calculator
               cd bmi-calculator
             else
               cd bmi-calculator
@@ -29,10 +29,12 @@ jobs:
               git reset --hard origin/main
             fi
 
-            # 2. Stop and remove the existing container
-            docker stop bmi-app || true
-            docker rm bmi-app || true
+            # 2. Force stop & remove existing container to prevent name conflicts
+            docker rm -f bmi-app || true
 
-            # 3. Build a fresh Docker image without cache and run the container
+            # 3. Clean up Docker cache/unused images to free disk space
+            docker system prune -af
+
+            # 4. Build fresh Docker image and run container
             docker build --no-cache -t bmi-app .
             docker run -d -p 8501:8501 --name bmi-app --restart always bmi-app
